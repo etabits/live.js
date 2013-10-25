@@ -1,0 +1,30 @@
+{
+  "name": "live",
+  "version": "0.0.1",
+  "description": "Better Web Development: Edit your javascript sources without refreshing your webpage.",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/etabits/live.js.git"
+  },
+  "keywords": [
+    "web",
+    "javascript",
+    "web-development"
+  ],
+  "author": "Hasan Arous",
+  "license": "GPL2",
+  "bugs": {
+    "url": "https://github.com/etabits/live.js/issues"
+  },
+  "dependencies": {
+    "socket.io": "*",
+    "coffee-script": "*"
+  },
+  "bin": {
+    "live": "./bin/live"
+  }
+}

@@ -1,0 +1,11 @@
+#!/usr/bin/env coffee
+
+live = require '../'
+
+opts = {}
+args = process.argv.slice(2)
+if 1 == args.length
+	opts.path = args[0]
+
+ls = new live.LiveServer opts
+ls.standAlone()
