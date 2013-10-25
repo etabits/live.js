@@ -1,4 +1,5 @@
-log = console.log
+log = () ->
+	console.log.apply(console, arguments)
 
 class LiveJS
 	self = {}
