@@ -52,6 +52,7 @@ class LiveServer
 				self.triggerUpdateEvent data, filename
 
 
+
 	triggerUpdateEvent: (data, filename) ->
 		if /\.coffee$/.test(filename)
 			data = LiveServer.compileCoffeeScript data
@@ -59,18 +60,30 @@ class LiveServer
 			socket.emit 'update', {
 					date: new Date(),
 					file: filename,
-					code: data
+					code: data.toString()
 				}
 
 
 	standAlone: () ->
 		@server = http.createServer @httpHandler
-		@io = require('socket.io').listen @server
+
+		@doServer @server
 		@server.listen @opts.port
 		#console.log @server
 		#console.log @io
-		@io.sockets.on 'connection', @ioHandler
 
+	doExpress: (app, @server) ->
+		@doServer @server
+		app.get '/live.js', (req, res, next) ->
+			#console.log 'AAAAA'
+			self.sendAsset scriptFile, res
+
+	doServer: (server) ->
+		@server ?= server
+		#console.log @server
+		@io = require('socket.io').listen @server
+		@io.sockets.on 'connection', @ioHandler
+		#console.log server
 
 	ioHandler: (socket) ->
 		self.sockets.push socket
