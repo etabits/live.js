@@ -67,7 +67,7 @@
       return fs.readFile(this.path + filename, function(err, data) {
         var hash;
         if (err) {
-          return console.log('File', this.path, 'disappeared or something!');
+          return console.log('File', self.path + filename, 'disappeared or something!');
         }
         hash = sha1(data);
         if (self.hashes[filename] !== hash) {
@@ -79,6 +79,7 @@
 
     LiveServer.prototype.triggerUpdateEvent = function(data, filename) {
       var socket, _i, _len, _ref, _results;
+      console.log('updateEvent', filename, new Date());
       if (/\.coffee$/.test(filename)) {
         data = LiveServer.compileCoffeeScript(data);
       }

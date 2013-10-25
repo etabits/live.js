@@ -46,7 +46,7 @@ class LiveServer
 	watchHandler: (event, filename) ->
 		console.log 'WATCH', event, filename, new Date()
 		fs.readFile this.path + filename, (err, data) ->
-			return console.log('File', this.path, 'disappeared or something!') if err
+			return console.log('File', self.path + filename, 'disappeared or something!') if err
 			hash = sha1 data
 			if self.hashes[filename] != hash
 				self.hashes[filename] = hash
@@ -55,6 +55,7 @@ class LiveServer
 
 
 	triggerUpdateEvent: (data, filename) ->
+		console.log 'updateEvent', filename, new Date()
 		if /\.coffee$/.test(filename)
 			data = LiveServer.compileCoffeeScript data
 		for socket in self.sockets
