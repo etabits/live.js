@@ -46,6 +46,7 @@ class LiveServer
 	watchHandler: (event, filename) ->
 		console.log 'WATCH', event, filename, new Date()
 		fs.readFile this.path + filename, (err, data) ->
+			return console.log('File', this.path, 'disappeared or something!') if err
 			hash = sha1 data
 			if self.hashes[filename] != hash
 				self.hashes[filename] = hash

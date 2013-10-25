@@ -66,6 +66,9 @@
       console.log('WATCH', event, filename, new Date());
       return fs.readFile(this.path + filename, function(err, data) {
         var hash;
+        if (err) {
+          return console.log('File', this.path, 'disappeared or something!');
+        }
         hash = sha1(data);
         if (self.hashes[filename] !== hash) {
           self.hashes[filename] = hash;
