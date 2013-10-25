@@ -1,0 +1,10 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="/js/libTestClass.js")
+    script(src="/js/testScript.js")
+  body
+    block content
+    script(id="live-js",data-settings='{"namespaces":"Test","pattern":"/js/.+\\\\.js$"}',src="/live.js")
