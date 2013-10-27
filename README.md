@@ -5,9 +5,9 @@ Better Web Development: Edit your javascript sources without refreshing your web
 
 ## Test
 Execute
-`sh
+```sh
 make vanilla-test
-`
+```
 It will open an example html file in a browser window, a .coffee script file in an editor, and finally the live script that will watch for changes and push them to the browser.
 
 * On the browser window, click the button, and it will execute the function call as specified by current code in the file.
