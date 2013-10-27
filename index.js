@@ -115,6 +115,7 @@
         this.server = server;
       }
       this.io = require('socket.io').listen(this.server);
+      this.io.set('log level', 1);
       return this.io.sockets.on('connection', this.ioHandler);
     };
 

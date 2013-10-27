@@ -84,6 +84,7 @@ class LiveServer
 		@server ?= server
 		#console.log @server
 		@io = require('socket.io').listen @server
+		@io.set('log level', 1);
 		@io.sockets.on 'connection', @ioHandler
 		#console.log server
 
